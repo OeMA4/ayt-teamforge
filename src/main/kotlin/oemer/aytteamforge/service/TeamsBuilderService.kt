@@ -3,10 +3,11 @@ package oemer.aytteamforge.service
 import oemer.aytteamforge.model.Match
 import oemer.aytteamforge.model.Player
 import oemer.aytteamforge.model.Team
+import oemer.aytteamforge.repository.PlayerRepository
 import org.springframework.stereotype.Service
 
 @Service
-class TeamsBuilderService {
+class TeamsBuilderService(val playerRepository: PlayerRepository) {
 
     fun buildTeams(players: List<Player>): Match {
         // TODO calculate Teams with skill
@@ -29,7 +30,6 @@ class TeamsBuilderService {
     }
 
     private fun getSkillOfPlayer(name: String): Double{
-        // TODO return value from database
-        return 0.0
+        return playerRepository.getByName(name)?.skill ?: 0.0
     }
 }
