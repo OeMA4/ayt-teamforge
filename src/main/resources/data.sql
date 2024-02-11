@@ -1,0 +1,14 @@
+Insert Into Player (id, name, skill) VALUES (1, 'Ömer', 8.0);
+Insert Into Player (id, name, skill) VALUES (2, 'Abraham', 8.0);
+Insert Into Player (id, name, skill) VALUES (3, 'Cihan', 8.0);
+Insert Into Player (id, name, skill) VALUES (4, 'Enes', 8.0);
+Insert Into Player (id, name, skill) VALUES (5, 'Serkan', 8.0);
+Insert Into Player (id, name, skill) VALUES (6, 'Cihan', 8.0);
+Insert Into Player (id, name, skill) VALUES (7, 'Yusuf', 8.0);
+Insert Into Player (id, name, skill) VALUES (8, 'Büny', 8.0);
+Insert Into Player (id, name, skill) VALUES (9, 'Ali', 8.0);
+Insert Into Player (id, name, skill) VALUES (10, 'Muhammed', 8.0);
+Insert Into Player (id, name, skill) VALUES (11, 'Sinan', 8.0);
+Insert Into Player (id, name, skill) VALUES (12, 'Koray', 8.0);
+Insert Into Player (id, name, skill) VALUES (13, 'Mustafa', 8.0);
+Insert Into Player (id, name, skill) VALUES (14, 'Furkan AK', 8.0);

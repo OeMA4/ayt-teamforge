@@ -1,8 +1,15 @@
 package oemer.aytteamforge.model
 
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
 
 
-data class Player(val id: Int, val name: String, val skill: Double?)
+@Entity
+data class Player(@Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long = 0,
+                  val name: String = "default Name",
+                  val skill: Double? = null)
 
 data class Team(val players: List<Player>, val avgSkill: Double)
 
