@@ -2,6 +2,7 @@ package oemer.aytteamforge.service
 
 import oemer.aytteamforge.model.Match
 import oemer.aytteamforge.model.Player
+import oemer.aytteamforge.model.Team
 import org.springframework.stereotype.Service
 
 @Service
@@ -11,7 +12,13 @@ class TeamsBuilderService {
         // TODO calculate Teams with skill
         val playersWithSkills = fillSkillsOfPlayers(players)
 
-        return Match(emptyList())
+        val teams = calculateTeams(playersWithSkills)
+
+        return Match(teams)
+    }
+
+    private fun calculateTeams(players: List<Player>): List<Team> {
+        return emptyList<Team>()
     }
 
     private fun fillSkillsOfPlayers(players: List<Player>): List<Player> {
