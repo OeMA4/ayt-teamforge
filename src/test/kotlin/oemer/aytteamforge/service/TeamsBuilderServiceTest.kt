@@ -27,6 +27,8 @@ class TeamsBuilderServiceTest {
         val match = sut.buildTeams(players)
 
         // assert
-        assertThat(match.teams).allSatisfy { team -> assertThat(team.avgSkill).isEqualTo(expectedAvgSkill) }
+        assertThat(match.teams)
+                .isNotEmpty
+                .allSatisfy { team -> assertThat(team.avgSkill).isEqualTo(expectedAvgSkill) }
     }
 }
