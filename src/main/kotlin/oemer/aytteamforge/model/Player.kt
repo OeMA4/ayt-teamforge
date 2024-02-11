@@ -1,6 +1,8 @@
 package oemer.aytteamforge.model
 
-data class Player(val name: String, val skill: Double?)
+
+
+data class Player(val id: Int, val name: String, val skill: Double?)
 
 data class Team(val players: List<Player>, val avgSkill: Double)
 

@@ -18,6 +18,6 @@ class TeamsController(private val teamsBuilderService: TeamsBuilderService) {
     }
 
     private fun mapPlayerDtoToPlayer(players: List<PlayerDto>): List<Player> {
-        return players.map { Player(it.name, it.skill) }
+        return players.map { Player(1,it.name, it.skill) }
     }
 }
