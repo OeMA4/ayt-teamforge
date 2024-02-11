@@ -11,14 +11,12 @@ class TeamsBuilderService {
     fun buildTeams(players: List<Player>): Match {
         // TODO calculate Teams with skill
         val playersWithSkills = fillSkillsOfPlayers(players)
-
         val teams = calculateTeams(playersWithSkills)
-
         return Match(teams)
     }
 
     private fun calculateTeams(players: List<Player>): List<Team> {
-        return emptyList<Team>()
+        return emptyList()
     }
 
     private fun fillSkillsOfPlayers(players: List<Player>): List<Player> {
