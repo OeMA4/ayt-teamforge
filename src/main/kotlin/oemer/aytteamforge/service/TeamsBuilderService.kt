@@ -5,6 +5,7 @@ import oemer.aytteamforge.model.Player
 import oemer.aytteamforge.model.Team
 import oemer.aytteamforge.repository.PlayerRepository
 import org.springframework.stereotype.Service
+import kotlin.math.absoluteValue
 
 @Service
 class TeamsBuilderService(val playerRepository: PlayerRepository) {
@@ -17,7 +18,36 @@ class TeamsBuilderService(val playerRepository: PlayerRepository) {
     }
 
     private fun calculateTeams(players: List<Player>): List<Team> {
-        return emptyList()
+        val skillSum = players.sumOf { it.skill ?: 0.0}
+        if (players.size % 2 != 0){
+            return emptyList()
+        }
+        val numOfPlayersInTeam = players.size / 2
+
+        val orderedPlayers = players.sortedByDescending { it.skill }.toMutableList()
+        val teamA = arrayListOf<Player>()
+
+        val skillGoalOfTeam = skillSum / 2
+
+        do {
+            teamA.add(orderedPlayers.first())
+            orderedPlayers.removeFirst()
+            if (!isPossibleToAddMorePlayers(teamA.size,numOfPlayersInTeam)){
+                break
+            }
+            teamA.add(orderedPlayers.last())
+            orderedPlayers.removeLast()
+
+        }
+        while (teamA.size != numOfPlayersInTeam && teamA.sumOf { it.skill ?: 0.0 } < skillGoalOfTeam)
+        val finalTeamA = Team(teamA, teamA.sumOf { it.skill!! } / numOfPlayersInTeam)
+        val finalTeamB = Team(orderedPlayers, orderedPlayers.sumOf { it.skill!! } / numOfPlayersInTeam)
+
+        return listOf(finalTeamA, finalTeamB)
+    }
+
+    private fun isPossibleToAddMorePlayers(teamSize: Int, numOfPlayersInTeam: Int): Boolean {
+        return teamSize < numOfPlayersInTeam
     }
 
     private fun fillSkillsOfPlayers(players: List<Player>): List<Player> {
