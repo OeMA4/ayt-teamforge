@@ -3,9 +3,13 @@
     <v-responsive class="align-center text-center fill-height">
       <v-row class="d-flex align-center justify-center">
         <v-col cols="auto">
+          <router-link to="/teamsInputMask"
+                       custom
+                       v-slot="{ navigate }">
           <v-btn
             color="primary"
             min-width="228"
+            @click="navigate"
             rel="noopener noreferrer"
             size="x-large">
             <v-icon
@@ -14,6 +18,7 @@
               start/>
             Teams erstellen!
           </v-btn>
+          </router-link>
         </v-col>
 
         <v-col cols="auto">
