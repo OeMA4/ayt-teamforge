@@ -2,7 +2,6 @@ package oemer.aytteamforge.service
 
 import oemer.aytteamforge.controller.dto.`in`.PlayerDto
 import oemer.aytteamforge.controller.dto.`in`.TeamsRequestDto
-import oemer.aytteamforge.model.Player
 import oemer.aytteamforge.repository.PlayerRepository
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.*
