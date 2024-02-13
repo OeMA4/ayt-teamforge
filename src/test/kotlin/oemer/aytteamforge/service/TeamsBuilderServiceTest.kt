@@ -62,6 +62,30 @@ class TeamsBuilderServiceTest {
     }
 
     @Test
+    fun make_Teams_with_not_equal_Skillpoints_and_3_Players_per_Team() {
+        //arrange
+        val players = listOf(
+                Player(name = "X", skill = 5.0),
+                Player(name = "T", skill = 5.0),
+                Player(name = "K", skill = 2.0),
+                Player(name = "O", skill = 4.0),
+                Player(name = "M", skill = 4.0),
+                Player(name = "A", skill = 3.0), )
+        val sut = TeamsBuilderService(playerRepository)
+        val firstTeamAVGSkill = 12.0 / 3.0
+        val secondTeamAVGSkill = 11.0 / 3.0
+
+        // act
+        val match = sut.buildTeams(players)
+
+        // assert
+        assertThat(match.teams)
+                .isNotEmpty
+                .anySatisfy { team -> assertThat(team.avgSkill).isEqualTo(firstTeamAVGSkill) }
+                .anySatisfy { team -> assertThat(team.avgSkill).isEqualTo(secondTeamAVGSkill) }
+    }
+
+    @Test
     fun return_emptyList_if_players_size_split_is_not_equal() {
         //arrange
         val players = listOf(
