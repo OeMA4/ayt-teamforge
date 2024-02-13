@@ -56,7 +56,6 @@
             </li>
           </ol>
         </v-col>
-
         <v-col>
           <ol>
             <li v-for="p in generatedTeams.teamB.player">
