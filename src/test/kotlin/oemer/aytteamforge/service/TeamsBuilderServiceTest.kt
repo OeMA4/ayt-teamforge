@@ -28,7 +28,7 @@ class TeamsBuilderServiceTest {
                 Player(name = "E", skill = 1.0))
 
         val sut = TeamsBuilderService(playerRepository)
-        val expectedAvgSkill = 15.0
+        val expectedAvgSkill = 15.0 / 5
 
         // act
         val match = sut.buildTeams(players)
@@ -59,5 +59,21 @@ class TeamsBuilderServiceTest {
         assertThat(match.teams)
                 .isNotEmpty
                 .allSatisfy { team -> assertThat(team.avgSkill).isEqualTo(expectedTeamAvgSkill) }
+    }
+
+    @Test
+    fun return_emptyList_if_players_size_split_is_not_equal() {
+        //arrange
+        val players = listOf(
+                Player(name = "X", skill = 5.0),
+                Player(name = "M", skill = 4.0),
+                Player(name = "A", skill = 3.0), )
+        val sut = TeamsBuilderService(playerRepository)
+
+        // act
+        val match = sut.buildTeams(players)
+
+        // assert
+        assertThat(match.teams).isEmpty()
     }
 }
