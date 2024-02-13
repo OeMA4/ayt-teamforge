@@ -64,7 +64,7 @@
           </ol>
         </v-col>
       </v-row>
-      <v-row v-if="generatedTeams?.teamA.avgSkill == generatedTeams?.teamB.avgSkill">
+      <v-row v-if="generatedTeams !== null && generatedTeams?.teamA.avgSkill == generatedTeams?.teamB.avgSkill">
         <v-col>
           <h1>Die Teams sind perfekt ausgeglichen!</h1>
         </v-col>
@@ -80,7 +80,7 @@
 
   const teamforgeService = TeamforgeService.prototype
 
-  let generatedTeams: Teams | undefined = undefined
+  let generatedTeams: Teams | null = null
 
   async function generiereTeams(){
     generatedTeams = teamforgeService.generateTeams(true)

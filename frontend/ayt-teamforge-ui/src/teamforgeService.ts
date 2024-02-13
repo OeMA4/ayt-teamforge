@@ -19,7 +19,7 @@ const teamB: Team = {
     { name: "ATest3", skill: 5.0},
     { name: "ATest4", skill: 6.0},
   ],
-  avgSkill: 5.0
+  avgSkill: 4.0
 }
 const mockTeams: Teams = { teamB: teamB, teamA: teamA }
 
