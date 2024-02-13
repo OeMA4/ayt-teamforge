@@ -40,6 +40,33 @@ class TeamsBuilderServiceTest {
     }
 
     @Test
+    fun make_Teams_with_one_black_sheep() {
+        //arrange
+        val players = listOf(
+                Player(name = "X", skill = 5.0),
+                Player(name = "T", skill = 5.0),
+                Player(name = "K", skill = 5.0),
+                Player(name = "K", skill = 5.0),
+                Player(name = "K", skill = 5.0),
+                Player(name = "K", skill = 5.0),
+                Player(name = "K", skill = 5.0),
+                Player(name = "E", skill = 1.0))
+
+        val sut = TeamsBuilderService(playerRepository)
+        val expectedAvgSkill1 = 20.0 / 4.0
+        val expectedAvgSkill2 = 16.0 / 4.0
+
+        // act
+        val match = sut.buildTeams(players)
+
+        // assert
+        assertThat(match.teams)
+                .isNotEmpty
+                .anySatisfy { team -> assertThat(team.avgSkill).isEqualTo(expectedAvgSkill1) }
+                .anySatisfy { team -> assertThat(team.avgSkill).isEqualTo(expectedAvgSkill2) }
+    }
+
+    @Test
     fun make_Teams_with_same_Skillpoints_and_3_Players_per_Team() {
         //arrange
         val players = listOf(

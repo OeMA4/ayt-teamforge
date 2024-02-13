@@ -18,8 +18,8 @@ class TeamsBuilderService(val playerRepository: PlayerRepository) {
         val playersWithSkills = fillSkillsOfPlayers(players)
 
         val bestTeams = mutableListOf<Pair<Team, Team>>()
-        generateTeams(playersWithSkills, mutableListOf(), mutableListOf(), 0, bestTeams, Double.MAX_VALUE)
 
+        generateTeams(playersWithSkills, mutableListOf(), mutableListOf(), 0, bestTeams, Double.MAX_VALUE)
         val filteredBestTeams = findBestTeamCombination(bestTeams)
         val teamA = filteredBestTeams.first
         val teamB = filteredBestTeams.second
