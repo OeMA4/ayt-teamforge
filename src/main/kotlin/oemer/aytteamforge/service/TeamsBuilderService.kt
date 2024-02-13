@@ -6,7 +6,6 @@ import oemer.aytteamforge.model.Team
 import oemer.aytteamforge.repository.PlayerRepository
 import org.springframework.stereotype.Service
 import kotlin.math.abs
-import kotlin.math.absoluteValue
 
 @Service
 class TeamsBuilderService(val playerRepository: PlayerRepository) {
