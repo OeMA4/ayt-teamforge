@@ -1,6 +1,8 @@
 export interface Player {
-  name: string,
-  numOfWins: number
+  id: number;
+  name: string;
+  numOfWins: number;
+  isSelected: boolean;
 }
 
 export interface TeamPlayer {

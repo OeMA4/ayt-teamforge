@@ -9,7 +9,7 @@ const teamA: Team = {
     { name: "Test3", skill: 5.0},
     { name: "Test4", skill: 6.0},
   ],
-  avgSkill: 4.0
+  avgSkill: 2.0
 }
 const teamB: Team = {
   player: [

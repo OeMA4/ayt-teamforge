@@ -3,7 +3,7 @@
     <v-responsive class="align-center text-center fill-height">
       <v-row class="d-flex align-center justify-center">
         <v-col cols="auto">
-          <router-link to="/teamsInputMask"
+          <router-link to="/playerSelection"
                        custom
                        v-slot="{ navigate }">
           <v-btn
