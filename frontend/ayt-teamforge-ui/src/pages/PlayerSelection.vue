@@ -5,16 +5,7 @@
       <br>
       <v-row>
         <v-col>
-          <v-text-field label="Spieler 1" variant="outlined"></v-text-field>
-          <v-text-field label="Spieler 2" variant="outlined"></v-text-field>
-          <v-text-field label="Spieler 3" variant="outlined"></v-text-field>
-          <v-text-field label="Spieler 4" variant="outlined"></v-text-field>
-          <v-text-field label="Spieler 5" variant="outlined"></v-text-field>
-          <v-text-field label="Spieler 6" variant="outlined"></v-text-field>
-          <v-text-field label="Spieler 7" variant="outlined"></v-text-field>
-          <v-text-field label="Spieler 8" variant="outlined"></v-text-field>
-          <v-text-field label="Spieler 9" variant="outlined"></v-text-field>
-          <v-text-field label="Spieler 10" variant="outlined"></v-text-field>
+          <v-text-field v-for="n in 10 - selectedPlayers.length" :label="`Spieler ${n}`" variant="outlined"></v-text-field>
         </v-col>
         <v-col>
           <h1> Alle vorhandenen und gespeicherten Spieler mit Skills!</h1>
