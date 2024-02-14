@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.PutMapping
 @Controller("history")
 class MatchHistoryController(private val matchHistoryService: MatchHistoryService) {
 
-    @GetMapping("allRanks")
+    @GetMapping("allranks")
     fun getAllRanks(): MatchHistory {
         return matchHistoryService.getHistory()
     }
 
-    @PutMapping("adaptRanks")
+    @PutMapping("adaptranks")
     fun adaptRanks(winningTeam: List<String>){
         matchHistoryService.addWinningTeam(winningTeam)
     }
