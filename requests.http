@@ -6,12 +6,34 @@ Content-Type: application/json
 {
   "players": [
     {
-      "name": "Ömer",
-      "skill": "5.0"
+      "name": "Ömer"
     },
     {
-      "name": "Ali",
-      "skill": "5.0"
+      "name": "Büny"
+    },
+    {
+      "name": "Enes"
+    },
+    {
+      "name": "Sinan"
+    },
+    {
+      "name": "Serkan"
+    },
+    {
+      "name": "Ali"
+    },
+    {
+      "name": "Mustafa"
+    },
+    {
+      "name": "Fatih"
+    },
+    {
+      "name": "Yusuf"
+    },
+    {
+      "name": "Ibrahim Abi"
     }
   ]
 }

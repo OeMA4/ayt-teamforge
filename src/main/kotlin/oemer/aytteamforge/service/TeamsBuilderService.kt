@@ -46,13 +46,13 @@ class TeamsBuilderService(val playerRepository: PlayerRepository) {
         // Try adding player to team 1
         team1.add(player)
         generateTeams(players, team1, team2, index + 1, bestTeams,
-            bestDiff.coerceAtMost(abs(team1.sumOf { it.skill } - team2.sumOf { it.skill })))
+            bestDiff.coerceAtMost(abs(team1.sumOf { it.skill.toDouble() } - team2.sumOf { it.skill })))
         team1.remove(player)
 
         // Try adding player to team 2
         team2.add(player)
         generateTeams(players, team1, team2, index + 1, bestTeams,
-            bestDiff.coerceAtMost(abs(team1.sumOf { it.skill } - team2.sumOf { it.skill })))
+            bestDiff.coerceAtMost(abs(team1.sumOf { it.skill.toDouble() } - team2.sumOf { it.skill })))
         team2.remove(player)
     }
 
@@ -64,7 +64,7 @@ class TeamsBuilderService(val playerRepository: PlayerRepository) {
     ) {
         val totalSkillTeam1 = team1.sumOf { it.skill }
         val totalSkillTeam2 = team2.sumOf { it.skill }
-        val diff = abs(totalSkillTeam1 - totalSkillTeam2)
+        val diff = abs(totalSkillTeam1 - totalSkillTeam2).toDouble()
 
         if (diff < bestDiff) {
             bestTeams.clear()
@@ -88,11 +88,11 @@ class TeamsBuilderService(val playerRepository: PlayerRepository) {
     private fun mapDtoToPlayers(requestDto: TeamsRequestDto): List<Player>{
         return requestDto.players.map { dto ->
             val savedPlayer = playerRepository.getByName(dto.name)
-            savedPlayer?.let { Player(it.id,it.name, it.skill) } ?: Player(name = dto.name, skill = dto.skill ?: 0.0)
+            savedPlayer?.let { Player(it.id,it.name, it.skill) } ?: Player(name = dto.name, skill = dto.skill ?: 0)
              }
     }
 
     private fun calculateAverageTeamSkill(team: List<Player>): Double {
-        return team.sumOf { it.skill } / team.size
+        return team.sumOf { it.skill.toDouble() } / team.size
     }
 }
