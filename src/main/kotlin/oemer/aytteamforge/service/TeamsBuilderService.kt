@@ -37,16 +37,7 @@ class TeamsBuilderService(val playerRepository: PlayerRepository) {
 
     fun generateTeams(players: List<Player>, team1: MutableList<Player>, team2: MutableList<Player>, index: Int, bestTeams: MutableList<Pair<Team,Team>>, bestDiff: Double) {
         if (index == players.size) {
-            val totalSkillTeam1 = team1.sumOf { it.skill }
-            val totalSkillTeam2 = team2.sumOf { it.skill }
-            val diff = abs(totalSkillTeam1 - totalSkillTeam2)
-
-            if (diff < bestDiff) {
-                bestTeams.clear()
-                bestTeams.add(Pair(Team(team1.toList(), calculateAverageTeamSkill(team1)) , Team(team2.toList(),calculateAverageTeamSkill(team2) )))
-            } else if (diff == bestDiff) {
-                bestTeams.add(Pair(Team(team1.toList(), calculateAverageTeamSkill(team1)) , Team(team2.toList(),calculateAverageTeamSkill(team2) )))
-            }
+            createBestTeamsPair(team1, team2, bestDiff, bestTeams)
             return
         }
 
@@ -54,13 +45,44 @@ class TeamsBuilderService(val playerRepository: PlayerRepository) {
 
         // Try adding player to team 1
         team1.add(player)
-        generateTeams(players, team1, team2, index + 1, bestTeams, bestDiff.coerceAtMost(abs(team1.sumOf { it.skill } - team2.sumOf { it.skill })))
+        generateTeams(players, team1, team2, index + 1, bestTeams,
+            bestDiff.coerceAtMost(abs(team1.sumOf { it.skill } - team2.sumOf { it.skill })))
         team1.remove(player)
 
         // Try adding player to team 2
         team2.add(player)
-        generateTeams(players, team1, team2, index + 1, bestTeams, bestDiff.coerceAtMost(abs(team1.sumOf { it.skill } - team2.sumOf { it.skill })))
+        generateTeams(players, team1, team2, index + 1, bestTeams,
+            bestDiff.coerceAtMost(abs(team1.sumOf { it.skill } - team2.sumOf { it.skill })))
         team2.remove(player)
+    }
+
+    private fun createBestTeamsPair(
+        team1: MutableList<Player>,
+        team2: MutableList<Player>,
+        bestDiff: Double,
+        bestTeams: MutableList<Pair<Team, Team>>
+    ) {
+        val totalSkillTeam1 = team1.sumOf { it.skill }
+        val totalSkillTeam2 = team2.sumOf { it.skill }
+        val diff = abs(totalSkillTeam1 - totalSkillTeam2)
+
+        if (diff < bestDiff) {
+            bestTeams.clear()
+            bestTeams.add(
+                Pair(
+                    Team(team1.toList(), calculateAverageTeamSkill(team1)),
+                    Team(team2.toList(), calculateAverageTeamSkill(team2))
+                )
+            )
+        } else if (diff == bestDiff) {
+            bestTeams.add(
+                Pair(
+                    Team(team1.toList(), calculateAverageTeamSkill(team1)),
+                    Team(team2.toList(), calculateAverageTeamSkill(team2))
+                )
+            )
+        }
+        return
     }
 
     private fun mapDtoToPlayers(requestDto: TeamsRequestDto): List<Player>{

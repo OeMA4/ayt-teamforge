@@ -12,8 +12,4 @@ data class Player(@Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id
                   val skill: Double = 0.0,
                   val numOfWins: Int = 0)
 
-data class Team(val players: List<Player>, val avgSkill: Double)
-
-data class Match(val teams: List<Team>)
-
 

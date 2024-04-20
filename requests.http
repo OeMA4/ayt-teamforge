@@ -1,0 +1,17 @@
+### here we go -> create Teams
+
+POST http://localhost:8080/
+Content-Type: application/json
+
+{
+  "players": [
+    {
+      "name": "Ömer",
+      "skill": "5.0"
+    },
+    {
+      "name": "Ali",
+      "skill": "5.0"
+    }
+  ]
+}

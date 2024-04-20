@@ -128,4 +128,28 @@ class TeamsBuilderServiceTest {
         // assert
         assertThat(match.teams).isEmpty()
     }
+
+    @Test
+    fun just_because_post_Is_not_working() {
+        //arrange
+        val players = TeamsRequestDto(listOf(
+            PlayerDto(name = "Ömer", skill = 3.0),
+            PlayerDto(name = "Büny", skill = 4.0),
+            PlayerDto(name = "Enes", skill = 4.0),
+            PlayerDto(name = "Sinan", skill = 6.0),
+            PlayerDto(name = "Serkan", skill = 7.0),
+            PlayerDto(name = "Ali", skill = 1.0),
+            PlayerDto(name = "Mustafa", skill = 4.0),
+            PlayerDto(name = "Fatih", skill = 3.0),
+            PlayerDto(name = "Yusuf", skill = 3.0),
+            PlayerDto(name = "Ibrahim Abi", skill = 3.0), ))
+        val sut = TeamsBuilderService(playerRepository)
+
+        // act
+        val match = sut.buildTeams(players)
+        println(match)
+
+        // assert
+        assertThat(match.teams).allSatisfy { team -> assertThat(team.avgSkill).isEqualTo(3.6) }
+    }
 }
