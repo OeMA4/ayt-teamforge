@@ -1,6 +1,6 @@
 ### here we go -> create Teams
 
-POST http://localhost:8080/
+POST http://localhost:8000/
 Content-Type: application/json
 
 {

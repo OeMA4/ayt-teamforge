@@ -17,16 +17,16 @@ class TeamsBuilderServiceTest {
     fun make_Teams_with_same_Skillpoints() {
         //arrange
         val players = TeamsRequestDto(listOf(
-                PlayerDto(name = "X", skill = 3.0),
-                PlayerDto(name = "T", skill = 4.0),
-                PlayerDto(name = "K", skill = 5.0),
-                PlayerDto(name = "O", skill = 1.0),
-                PlayerDto(name = "Y", skill = 2.0),
-                PlayerDto(name = "A", skill = 4.0),
-                PlayerDto(name = "B", skill = 4.0),
-                PlayerDto(name = "C", skill = 5.0),
-                PlayerDto(name = "D", skill = 1.0),
-                PlayerDto(name = "E", skill = 1.0)))
+                PlayerDto(name = "X", skill = 3),
+                PlayerDto(name = "T", skill = 4),
+                PlayerDto(name = "K", skill = 5),
+                PlayerDto(name = "O", skill = 1),
+                PlayerDto(name = "Y", skill = 2),
+                PlayerDto(name = "A", skill = 4),
+                PlayerDto(name = "B", skill = 4),
+                PlayerDto(name = "C", skill = 5),
+                PlayerDto(name = "D", skill = 1),
+                PlayerDto(name = "E", skill = 1)))
 
         val sut = TeamsBuilderService(playerRepository)
         val expectedAvgSkill = 15.0 / 5
@@ -44,14 +44,14 @@ class TeamsBuilderServiceTest {
     fun make_Teams_with_one_black_sheep() {
         //arrange
         val players = TeamsRequestDto(listOf(
-                PlayerDto(name = "X", skill = 5.0),
-                PlayerDto(name = "T", skill = 5.0),
-                PlayerDto(name = "K", skill = 5.0),
-                PlayerDto(name = "K", skill = 5.0),
-                PlayerDto(name = "K", skill = 5.0),
-                PlayerDto(name = "K", skill = 5.0),
-                PlayerDto(name = "K", skill = 5.0),
-                PlayerDto(name = "E", skill = 1.0)))
+                PlayerDto(name = "X", skill = 5),
+                PlayerDto(name = "T", skill = 5),
+                PlayerDto(name = "K", skill = 5),
+                PlayerDto(name = "K", skill = 5),
+                PlayerDto(name = "K", skill = 5),
+                PlayerDto(name = "K", skill = 5),
+                PlayerDto(name = "K", skill = 5),
+                PlayerDto(name = "E", skill = 1)))
 
         val sut = TeamsBuilderService(playerRepository)
         val expectedAvgSkill1 = 20.0 / 4.0
@@ -71,12 +71,12 @@ class TeamsBuilderServiceTest {
     fun make_Teams_with_same_Skillpoints_and_3_Players_per_Team() {
         //arrange
         val players = TeamsRequestDto(listOf(
-                PlayerDto(name = "X", skill = 5.0),
-                PlayerDto(name = "T", skill = 5.0),
-                PlayerDto(name = "K", skill = 1.0),
-                PlayerDto(name = "O", skill = 4.0),
-                PlayerDto(name = "M", skill = 4.0),
-                PlayerDto(name = "A", skill = 3.0), ))
+                PlayerDto(name = "X", skill = 5),
+                PlayerDto(name = "T", skill = 5),
+                PlayerDto(name = "K", skill = 1),
+                PlayerDto(name = "O", skill = 4),
+                PlayerDto(name = "M", skill = 4),
+                PlayerDto(name = "A", skill = 3), ))
         val sut = TeamsBuilderService(playerRepository)
         val expectedTeamAvgSkill: Double = 11.0 / 3.0
 
@@ -93,12 +93,12 @@ class TeamsBuilderServiceTest {
     fun make_Teams_with_not_equal_Skillpoints_and_3_Players_per_Team() {
         //arrange
         val players = TeamsRequestDto(listOf(
-                PlayerDto(name = "X", skill = 5.0),
-                PlayerDto(name = "T", skill = 5.0),
-                PlayerDto(name = "K", skill = 2.0),
-                PlayerDto(name = "O", skill = 4.0),
-                PlayerDto(name = "M", skill = 4.0),
-                PlayerDto(name = "A", skill = 3.0), ))
+                PlayerDto(name = "X", skill = 5),
+                PlayerDto(name = "T", skill = 5),
+                PlayerDto(name = "K", skill = 2),
+                PlayerDto(name = "O", skill = 4),
+                PlayerDto(name = "M", skill = 4),
+                PlayerDto(name = "A", skill = 3), ))
         val sut = TeamsBuilderService(playerRepository)
         val firstTeamAVGSkill = 12.0 / 3.0
         val secondTeamAVGSkill = 11.0 / 3.0
@@ -117,9 +117,9 @@ class TeamsBuilderServiceTest {
     fun return_emptyList_if_players_size_split_is_not_equal() {
         //arrange
         val players = TeamsRequestDto(listOf(
-                PlayerDto(name = "X", skill = 5.0),
-                PlayerDto(name = "M", skill = 4.0),
-                PlayerDto(name = "A", skill = 3.0), ))
+                PlayerDto(name = "X", skill = 5),
+                PlayerDto(name = "M", skill = 4),
+                PlayerDto(name = "A", skill = 3), ))
         val sut = TeamsBuilderService(playerRepository)
 
         // act
@@ -133,16 +133,16 @@ class TeamsBuilderServiceTest {
     fun just_because_post_Is_not_working() {
         //arrange
         val players = TeamsRequestDto(listOf(
-            PlayerDto(name = "Ömer", skill = 3.0),
-            PlayerDto(name = "Büny", skill = 4.0),
-            PlayerDto(name = "Enes", skill = 4.0),
-            PlayerDto(name = "Sinan", skill = 6.0),
-            PlayerDto(name = "Serkan", skill = 7.0),
-            PlayerDto(name = "Ali", skill = 1.0),
-            PlayerDto(name = "Mustafa", skill = 4.0),
-            PlayerDto(name = "Fatih", skill = 3.0),
-            PlayerDto(name = "Yusuf", skill = 3.0),
-            PlayerDto(name = "Ibrahim Abi", skill = 3.0), ))
+            PlayerDto(name = "Ömer", skill = 3),
+            PlayerDto(name = "Büny", skill = 4),
+            PlayerDto(name = "Enes", skill = 4),
+            PlayerDto(name = "Sinan", skill = 6),
+            PlayerDto(name = "Serkan", skill = 7),
+            PlayerDto(name = "Ali", skill = 1),
+            PlayerDto(name = "Mustafa", skill = 4),
+            PlayerDto(name = "Fatih", skill = 3),
+            PlayerDto(name = "Yusuf", skill = 3),
+            PlayerDto(name = "Ibrahim Abi", skill = 3), ))
         val sut = TeamsBuilderService(playerRepository)
 
         // act
@@ -150,6 +150,6 @@ class TeamsBuilderServiceTest {
         println(match)
 
         // assert
-        assertThat(match.teams).allSatisfy { team -> assertThat(team.avgSkill).isEqualTo(3.6) }
+        assertThat(match.teams).allSatisfy { team -> assertThat(team.avgSkill).isEqualTo(3.8) }
     }
 }
